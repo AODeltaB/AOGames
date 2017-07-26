@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class lifecounter_pb : MonoBehaviour
@@ -27,19 +27,11 @@ public class lifecounter_pb : MonoBehaviour
         {
             if (currentHealth < .25f)
             {
-<<<<<<< HEAD:scripts/lifecounter_pb.cs
                 currentHealth = .0f; // Si il reste moins de 25HP + "L" => on reduit à 0 au lieu d'avoir un nombre négatif
             }
             else
             {
                 currentHealth = currentHealth - .25f; // On perds 25 HP soit 0.25 value
-=======
-              currentHealth = .0f // Si il reste moins de 25HP + "L" => on reduit à 0 au lieu d'avoir un nombre négatif
-            }
-            else
-            {
-              currentHealth = currentHealth - .25f; // On perds 25 HP soit 0.25 value
->>>>>>> origin/master:lifecounter_pb.cs
             }
         }
 
