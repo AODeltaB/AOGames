@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class lifecounter_pb : MonoBehaviour {
+public class lifecounter_pb : MonoBehaviour
+{
 
     public Slider LifeBar; // Notre Slider LifeBar
     public Text life_progressBarText; // Le texte value de la vie
-    public GameObject DeathScreen; // Pannel 
+    public GameObject DeathScreen; // Pannel
 
     // Variables d'initialisation
     public float startingHealth = 100; // Comme dans tous jeux, la vie est set à 100
@@ -24,7 +25,14 @@ public class lifecounter_pb : MonoBehaviour {
         LifeBar.value = currentHealth;
         if (Input.GetKeyDown(KeyCode.L)) // Si on appuie sur "L"
         {
-            currentHealth = currentHealth - .25f; // On perds 25 HP soit 0.25 value
+            if (currentHealth < .25f)
+            {
+                currentHealth = .0f; // Si il reste moins de 25HP + "L" => on reduit à 0 au lieu d'avoir un nombre négatif
+            }
+            else
+            {
+                currentHealth = currentHealth - .25f; // On perds 25 HP soit 0.25 value
+            }
         }
 
         if (currentHealth <= .0f) // test si t'es mort ou non
