@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
-
+using UnityEngine.SceneManagement;
 public class lifecounter_pb : MonoBehaviour
 {
 
@@ -13,7 +13,6 @@ public class lifecounter_pb : MonoBehaviour
     private float startingHealth = 50; // Comme dans tous jeux, la vie est set à 100
     private float currentHealth; // oyeah
     public static bool PlayerIsDead = false; // Variable booléenne pour dire si le joueur est mort ou non
-
 
     void Start()
     {
@@ -45,20 +44,8 @@ public class lifecounter_pb : MonoBehaviour
         if (PlayerIsDead)
         {
            // MenuPause.isActive = false;
-            Player.GetComponent<FirstPersonController>().enabled = false;
-            Cursor.visible = true; // Affiche le curseur
-            Cursor.lockState = CursorLockMode.Confined; // Active la possibilité de bouger le curseur          
-            DeathScreen.SetActive(true); // Active l'écran noir "You died"
-            Time.timeScale = 0; // Arrête les animations
+        SceneManager.LoadScene("Assets/Scenes/DeathScene.unity");
         }
-        /*if (PlayerIsDead == false)
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Player.GetComponent<FirstPersonController>().enabled = true;
-            DeathScreen.SetActive(false); // Si le joueur n'est pas mort alors on désactive l'écran
-            Time.timeScale = 1; // et on joue les animations
-        }*/
         life_progressBarText.text = currentHealth * 100f + " HP"; // Récupère en string currentHealth * 100 et rajoute HP
     }
 }
